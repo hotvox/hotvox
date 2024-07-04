@@ -1,7 +1,7 @@
 '''
 This file is used to test the pronounce function in the pronounce module.
 '''
-from hotvox.pronounce import pronounce
+from hotvox.pronounce.app import pronounce
 
 def test_pronounce():
     '''

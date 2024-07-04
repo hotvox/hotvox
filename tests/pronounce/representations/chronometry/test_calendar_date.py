@@ -99,7 +99,7 @@ date_formats_three_literals = [
     '%Y %ML %DON',
 ]
 
-def _format_date(day: int, month: int, year: int, date_format: str) -> str:
+def _format_date(day: int | str, month: int, year: int, date_format: str) -> str:
     '''
     Utility function to format a date.
     '''
@@ -121,6 +121,12 @@ def test__compress_one_literal():
             formatted_date = _format_date(day, month, year, date_format)
             literal = Literal(formatted_date)
             assert _compress_one_literal([literal]) == CalendarDate(day, month, year)
+
+            # For days under 10, we should also test the zero-padded version.
+            if 0 < day < 10:
+                formatted_date = _format_date(f'0{day}', month, year, date_format)
+                literal = Literal(formatted_date)
+                assert _compress_one_literal([literal]) == CalendarDate(day, month, year)
 
 def test__compress_two_literals():
     '''

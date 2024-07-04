@@ -103,6 +103,7 @@ def get_ordinal_numeral(cardinal: int) -> str:
     Get the ordinal numeral of a cardinal number.
     e.g. 1 -> 1st, 2 -> 2nd, 3 -> 3rd, etc.
     '''
+    cardinal = int(cardinal)
     if cardinal in ORDINAL_NUMERAL_UNITS:
         return f'{cardinal}{ORDINAL_NUMERAL_UNITS[cardinal]}'
     return f'{cardinal}{ORDINAL_NUMERAL_UNITS[cardinal % 10]}'
@@ -111,24 +112,25 @@ def pronounce_number(number: int) -> str:
     '''
     Alias for pronounce_cardinal.
     '''
-    return _pronounce_number_recursive(number, CARDINAL_BASE)
+    return _pronounce_number_recursive(int(number), CARDINAL_BASE)
 
 def pronounce_cardinal(number: int) -> str:
     '''
     Pronounce a number in cardinal form.
     '''
-    return _pronounce_number_recursive(number, CARDINAL_BASE)
+    return _pronounce_number_recursive(int(number), CARDINAL_BASE)
 
 def pronounce_ordinal(number: int) -> str:
     '''
     Pronounce a number in ordinal form.
     '''
-    return _pronounce_number_recursive(number, ORDINAL_BASE)
+    return _pronounce_number_recursive(int(number), ORDINAL_BASE)
 
 def pronounce_year(number: int) -> str:
     '''
     Pronounce a number as a year.
     '''
+    number = int(number)
     era = '' if number > 0 else ' BC'
     digits = str(abs(number))
     if len(digits) == 4:
@@ -155,6 +157,7 @@ def _pronounce_number_recursive(number: int, numeral_base: dict[int, str]) -> st
     '''
     Pronounce a number in cardinal form.
     '''
+    number = int(number)
     digits = str(number)
     digits_length = len(digits)
 

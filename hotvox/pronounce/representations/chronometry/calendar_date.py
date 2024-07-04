@@ -229,4 +229,5 @@ def _valid_date_or_none(
 
     if _is_valid_date(day, month, year):
         return CalendarDate(day, month, year)
+
     return None

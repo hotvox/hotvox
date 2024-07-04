@@ -57,13 +57,6 @@ def _string_is_forename(string: str, forenames: list[str]) -> bool:
     '''
     if len(string) < 2 or not string.isalpha() or \
         not string[0].isupper() or not string[1:].islower():
-        print(
-            'string:', string,
-            'len:', len(string),
-            'isalpha:', string.isalpha(),
-            'first_upper:', string[0].isupper(),
-            'rest_lower:', string[1:].islower()
-        )
         return False
 
     return string.upper() in forenames
